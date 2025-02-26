@@ -47,6 +47,20 @@ Route::resource('photos', PhotoController::class);
    // 'index', 'show'
    // ]);
 
+// MEMBUAT VIEW-SOAL B
+//Route::get('/greeting', function () {
+//	return view('hello', ['name' => 'Andi']);
+ // });
+
+//VIEW DALAM DIREKTORI - soal C
+//Route::get('/greeting', function () {
+	// return view('blog.hello', ['name' => 'Della']);
+// });
+
+//MENAMPILKAN VIEW DARI CONTROLLER - SOAL B
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
+
 
  Route::get('/world', function () {
     return 'World';
