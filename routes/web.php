@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +18,35 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/hello', function () {
-    return 'Hello World';
- });
+
+
+
+
+Route::get('/hello', [WelcomeController::class, 'hello']);
+//MEMBUAT CONTTROLLER SOAL F
+Route::get('/',[PageController::class, 'index']);
+
+Route::get('/about',[PageController::class, 'about']);
+
+Route::get('/articles/{id}',[PageController::class, 'articles']);
+
+//MEMBUAT CONTROLLER SOAL G
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/about', [AboutController::class, 'index']);
+
+Route::get('/articles{id}', [ArticleController::class, 'index']);
+
+// RESOURCE CONTROLLER - SOAL B
+
+Route::resource('photos', PhotoController::class);
+
+//RESOURCE CONTROLLER - SOAL D
+
+//Route::resource('photos', PhotoController::class)->only([
+   // 'index', 'show'
+   // ]);
+
 
  Route::get('/world', function () {
     return 'World';
@@ -40,6 +72,8 @@ Route::get('/hello', function () {
     Route::get('/user/{name?}', function ($name=null) {
         return 'Nama saya '.$name;
         });
+
+
 
 //Route::get('/', function () {
 //    return view('welcome');
